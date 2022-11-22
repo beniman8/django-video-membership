@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
+    "courses",
     "memberships",
 ]
 
@@ -129,3 +129,11 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+if DEBUG:
+    STRIPE_PUBLISHABLE_KEY=config('STRIPE_PUBLISHABLE_KEY')
+    STRIPE_SECRET_KEY=config('STRIPE_SECRET_KEY')
+else:
+    STRIPE_PUBLISHABLE_KEY=config('STRIPE_PUBLISHABLE_KEY_2')
+    STRIPE_SECRET_KEY=config('STRIPE_SECRET_KEY_2')
