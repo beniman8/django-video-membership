@@ -1,6 +1,19 @@
 {% extends 'base.html' %}
 
+{% block title %} Lesson Detail View{% endblock title %}
+
 {% block content %}
 
-<p>{{lesson}}</p>
+
+<h1>Lesson Detail View</h1>
+{% if lesson is not None %}
+
+    <p>{{lesson.title}}</p>
+    <p>{{lesson.description}}</p>
+
+{% else %}
+<h3>Upgrade membership</h3>
+{% endif %}
+
+
 {% endblock content %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView,DetailView,View
 from .models import Course
-
+from memberships.models import UserMembership
 
 
 
@@ -34,6 +34,21 @@ class LessonDetailView(View):
             'lesson':lesson
 
         }
+
+        #TODO This is the logic for the membership
+        user_membership = UserMembership.objects.filter(user=request.user).first()
+        user_membership_type = user_membership.membership.membership_type
+
+        course_allowed_mem_types = course.allowed_memberships.all()
+
+
+        context = {
+            'lesson':None,
+
+        }
+
+        if course_allowed_mem_types.filter(membership_type=user_membership_type).exists():
+            context = {'lesson': lesson}
 
         return render(request,"courses/lesson_detail.html",context)
 
