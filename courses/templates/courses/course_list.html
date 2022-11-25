@@ -7,14 +7,19 @@ List View
 
 {% block content %}
 
-<h1>Courst List View Page</h1>
-
-{% for course in courses %}
-
-    <a href="{{course.get_absolute_url}}">{{course}} </a>
 
 
-{% endfor %}
+<div class="row">
+    <div class="col-sm-4 col-md-4">
 
+        <h1>Courst List View Page</h1>
 
+        {% for course in courses %}
+        
+            <a href="{{course.get_absolute_url}}">{{course}} </a>
+        
+        
+        {% endfor %}
+    </div>
+</div>
 {% endblock content %}

@@ -6,14 +6,33 @@
 
 
 <h1>Lesson Detail View</h1>
-{% if lesson is not None %}
 
-    <p>{{lesson.title}}</p>
-    <p>{{lesson.description}}</p>
 
-{% else %}
-<h3>Upgrade membership</h3>
-{% endif %}
+<div class="row">
+    <div class="col-sm-6 col-md-6">
+        {% if lesson is not None %}
 
+    
+        <h3>{{lesson.title}}</h3>
+        <p>{{lesson.description}}</p>
+
+        <video controls
+               controlsList="nodownload"
+               poster="{{lesson.thumbnail.url}}"
+               src="/static {{lesson.video_url}}"
+               width="300"
+               height="200"
+               >
+            Sorry, your browser does'nt support embedded videos.
+        </video>
+        {% else %}
+        <h3>Upgrade membership</h3>
+        <p>To view this course you'll need to upgrade your membership</p>
+        <br>
+        <a href="{% url 'memberships:select' %}" > <button class="btn btn-warning">Check out memberships</button> </a>
+        <hr>
+        {% endif %}
+    </div>
+</div>
 
 {% endblock content %}

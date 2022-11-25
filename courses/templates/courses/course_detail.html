@@ -2,10 +2,21 @@
 
 {% block content %}
 
-<p>{{course.title}}</p>
 
-{% for lesson in course.lessons %}
-<a href="{{lesson.get_absolute_url}}">{{lesson.title}}</a>
+<div class="row">
+    <div class="col-sm-4">
+        <h1>Course Detail PAge</h1>
+        <h3>{{course.title}}</h3>
+        <p>{{course.description}}</p>
 
-{% endfor %}
+        <ol>
+           {% for lesson in course.lessons %}
+                <li><a href="{{lesson.get_absolute_url}}">{{lesson.title}}</a></li> 
+            {% endfor %}
+            
+        </ol>
+
+    </div>
+</div>
+
 {% endblock content %}
